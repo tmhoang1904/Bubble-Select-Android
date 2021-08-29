@@ -36,15 +36,31 @@ object BubbleShader {
         uniform vec4 u_Background;
         uniform sampler2D u_Texture;
         uniform int u_Visibility;
-
+        uniform float u_time;
         varying vec2 v_UV;
-
+        
         void main()
         {
-            float distance = distance(vec2(0.5, 0.5), v_UV);
+            float pct = abs(sin(u_time));
             gl_FragColor = u_Visibility > 0 ?
-                mix(texture2D(u_Texture, v_UV), u_Background, smoothstep(0.49, 0.5, distance)) : vec4(0);
+            mix(texture2D(u_Texture, v_UV), u_Background, pct) : vec4(0);
         }
     """
 
 }
+
+//precision mediump float;
+//
+//uniform vec4 u_Background;
+//uniform sampler2D u_Texture;
+//uniform int u_Visibility;
+//
+//varying vec2 v_UV;
+//
+//void main()
+//{
+//    float distance = distance(vec2(0.5, 0.5), v_UV);
+//    gl_FragColor = u_Visibility > 0 ?
+//    mix(texture2D(u_Texture, v_UV), u_Background, smoothstep(0.49, 0.5, distance)) : vec4(0);
+//}
+

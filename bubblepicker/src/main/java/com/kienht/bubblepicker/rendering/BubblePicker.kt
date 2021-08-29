@@ -48,11 +48,13 @@ class BubblePicker(context: Context?, attrs: AttributeSet?) : GLSurfaceView(cont
     var maxSelectedCount: Int? = null
         set(value) {
             renderer.maxSelectedCount = value
+            field = value
         }
 
     var listener: BubblePickerListener? = null
         set(value) {
             renderer.listener = value
+            field = value
         }
 
     var bubbleSize = 50
@@ -60,6 +62,7 @@ class BubblePicker(context: Context?, attrs: AttributeSet?) : GLSurfaceView(cont
             if (value in 1..100) {
                 renderer.bubbleSize = value
             }
+            field = value
         }
 
     val selectedItems: List<PickerItem?>

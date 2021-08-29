@@ -16,15 +16,15 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
 
-        button_sync_activity.setOnClickListener({
+        button_sync_activity.setOnClickListener {
             val intent = Intent(this@MainActivity, SyncActivity::class.java)
             startActivity(intent)
-        })
+        }
 
-        button_async_activity.setOnClickListener({
+        button_async_activity.setOnClickListener {
             val intent = Intent(this@MainActivity, AsyncActivity::class.java)
             startActivity(intent)
-        })
+        }
     }
 
 }

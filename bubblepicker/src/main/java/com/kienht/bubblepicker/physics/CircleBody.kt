@@ -1,6 +1,7 @@
 package com.kienht.bubblepicker.physics
 
 import org.jbox2d.collision.shapes.CircleShape
+import org.jbox2d.collision.shapes.PolygonShape
 import org.jbox2d.common.Vec2
 import org.jbox2d.dynamics.*
 
@@ -34,10 +35,9 @@ class CircleBody(val world: World, var position: Vec2, var radius: Float, var in
 
     private val margin = 0.01f
     private val damping = 25f
-    private val shape: CircleShape
-        get() = CircleShape().apply {
-            m_radius = radius + margin
-            m_p.setZero()
+    private val shape: PolygonShape
+        get() = PolygonShape().apply {
+            setAsBox(radius + margin, radius + margin)
         }
 
     private val fixture: FixtureDef
@@ -101,7 +101,8 @@ class CircleBody(val world: World, var position: Vec2, var radius: Float, var in
     }
 
     private fun reset() {
-        physicalBody.fixtureList?.shape?.m_radius = radius + margin
+//        physicalBody.fixtureList?.shape?.m_radius = radius + margin
+        (physicalBody.fixtureList?.shape as? PolygonShape)?.setAsBox(radius + margin, radius + margin)
     }
 
     fun defineState() {
