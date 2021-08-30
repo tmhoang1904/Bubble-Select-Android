@@ -44,8 +44,8 @@ class SyncActivity : AppCompatActivity() {
         }
         picker.maxSelectedCount = 5
         picker.isAlwaysSelected = false
-
-        picker.bubbleSize = 5
+        picker.centerImmediately = true
+        picker.bubbleSize = 10
         picker.listener = object : BubblePickerListener {
             override fun onBubbleDeselected(item: PickerItem) {
                 toast("Unselected: " + item.title!!)

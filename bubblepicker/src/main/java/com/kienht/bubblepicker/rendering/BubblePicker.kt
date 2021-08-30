@@ -14,6 +14,7 @@ import com.kienht.bubblepicker.R
 import com.kienht.bubblepicker.adapter.BubblePickerAdapter
 import com.kienht.bubblepicker.model.Color
 import com.kienht.bubblepicker.model.PickerItem
+import com.kienht.bubblepicker.physics.Engine
 
 /**
  * Created by irinagalata on 1/19/17.
@@ -78,6 +79,12 @@ class BubblePicker(context: Context?, attrs: AttributeSet?) : GLSurfaceView(cont
         set(value) {
             field = value
             renderer.isAlwaysSelected = value
+        }
+
+    var selectedScale = 0.1f
+        set(value) {
+            field = value
+            Engine.resizeStep = value
         }
 
     var swipeMoveSpeed = 1.5f

@@ -22,7 +22,7 @@ object Engine {
             gravity = interpolate(20f, 80f, value / 100f)
             standardIncreasedGravity = interpolate(500f, 800f, value / 100f)
         }
-    var centerImmediately = false
+    var centerImmediately = true
     private var standardIncreasedGravity = interpolate(500f, 800f, 0.5f)
     private var bubbleRadius = 0.17f
 
@@ -30,7 +30,7 @@ object Engine {
     private val step = 0.0005f
     private val bodies: ArrayList<CircleBody> = ArrayList()
     private var borders: ArrayList<Border> = ArrayList()
-    private val resizeStep = 0.005f
+    var resizeStep = 0.1f
     private var scaleX = 0f
     private var scaleY = 0f
     private var touch = false
@@ -61,7 +61,7 @@ object Engine {
 
     fun move() {
         toBeResized.forEach { it.circleBody.resize(resizeStep) }
-        world.step(if (centerImmediately) 0.035f else step, 11, 11)
+        world.step(if (centerImmediately) 0.03f else step, 11, 11)
         bodies.forEach { move(it) }
         toBeResized.removeAll(toBeResized.filter { it.circleBody.finished })
         stepsCount++
